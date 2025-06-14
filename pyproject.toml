@@ -1,9 +1,9 @@
 [project]
 name = "boosta-task"
 version = "0.1.0"
-description = "technical task for Boosta company"
+description = "Voonix API utilization with GCP tools project"
 authors = [
-    {name = "vvk",email = "vladyslav.koval@raccoongang.com"}
+    {name = "vvk",email = "koval.vladislavv@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.11"
