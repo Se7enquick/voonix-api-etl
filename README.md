@@ -79,9 +79,8 @@ What aggregation to perform depends on a data freshness, so it can be either:
 Potential ERD for API
 ![Voonix API ERD](docs/erd_API.png)
 
-Potential ERD for BigQuery tables (STAR schema)
-
-![Voonix ERD and BigQuery structure](docs/erd_bigquery_voonix.png)
+Potential ERD for BigQuery (Simple STAR schema with 1 fact table for reporting)
+![Voonix API ERD](docs/erd_bigquery.png)
 
 ---
 
@@ -114,15 +113,16 @@ Data volume varies on number of advertisers, campaigns and affiliates. As I ment
 * Overengineering this type of pipeline (adding airflow on cloud composer for example) on this stage would cost a lot of money and will not bring better results
 
 Potential adjustments for the future (data scalability or integrating to other pipeline workflow):
-* Airflow or Dagster as an orchestrator for scalability
+* Airflow or Dagster as an orchestrator for scalability (Cloud Composer)
 * DBT usage for analytics layer
-* PySpark for distributed data processing
+* PySpark for distributed data processing (Google Cloud Dataproc)
+* Terraform (Cloud infra management)
 
 Query monitoring via Administration in BigQuery (Monitor healths, usage, cost) and cloud logging
 
 Query optimization for cost efficiency:
-* Partitioning (e.g by event date, ingestion date, converstion date)
+* Partitioning (e.g by event date, ingestion date, conversion date)
 * Clustering (e.g by advertisers, campaigns)
 * Avoiding select * (as BigQuery is a columnar-type storage)
-* When accuracy is not important -> use **APPROX_COUNT** instead of **COUNT**
+* When accuracy is not important -> **APPROX_COUNT** over **COUNT**
 * Materialized Views (precomputing expensive aggregations)
